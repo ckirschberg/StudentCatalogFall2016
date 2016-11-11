@@ -1,0 +1,20 @@
+﻿@model StudentCatalogFall2016.Models.Entity.StudentModel
+
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div class="jumbotron">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(a=>a.StudentModelId)
+
+        @Html.Partial("_StudentForm")
+
+        
+    }
+</div>
+

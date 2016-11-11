@@ -1,0 +1,30 @@
+﻿@model StudentCatalogFall2016.Models.Entity.StudentModel
+
+<div class="form-group">
+    <label>Firstname</label>
+    @Html.TextBoxFor(a => a.Firstname, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.Firstname)
+</div>
+
+<div class="form-group">
+    <label>Lastname</label>
+    @Html.TextBoxFor(a => a.Lastname, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.Lastname)
+</div>
+
+<div class="form-group">
+    <label>Email</label>
+    @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.Email)
+    @*<input type="text" id="Email" name="Email" />*@
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(a => a.MobilePhone)
+    @Html.TextBoxFor(a => a.MobilePhone, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.MobilePhone)
+</div>
+
+
+
+<input type="submit" value="Save" class="btn btn-primary" id="createSave" />
