@@ -10,6 +10,7 @@ namespace StudentCatalogFall2016.Models
         public int CompetencyHeaderModelId { get; set; }
         public string Name { get; set; }
 
+        //navigation property.
         public virtual ICollection<CompetencyModel> Competencies { get; set; }
     }
 }

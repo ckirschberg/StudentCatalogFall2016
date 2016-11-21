@@ -28,11 +28,79 @@ namespace StudentCatalogFall2016.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string search="")
         {
             //JsonResult
             //return data as Json (api)
             //return Json(studentRepo.GetAll(), JsonRequestBehavior.AllowGet);
+
+            var results = studentRepo.GetAll();
+            if (!String.IsNullOrEmpty(search))
+            {
+                var searchedNames = from s in results
+                                    where s.Firstname.ToLower()
+                                        .Contains(search.ToLower()) || 
+                                        s.Lastname.ToLower().Contains(search.ToLower())
+
+                                    select s;
+
+                results = searchedNames;
+            }
+
+            return View(results.ToList());
+
+
+
+
+
+
+            //List<StudentModel> students = studentRepo.GetAll();
+
+            //var filter = students
+            //    .Where(a => a.Firstname.Contains("t"))
+            //    .Select(a => a.Firstname);
+
+
+
+
+
+            //var studentsFirstnames =
+            //    from s in students
+            //    where s.Lastname.Contains("e")
+            //    select s;
+
+            //var students = studentRepo.GetAll()
+            //    .Where(a => a.Firstname == "Troels").ToList();
+
+            string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+
+            var upperLowerWords =
+                (from w in words
+                select new { Upper = w.ToUpper(), Lower = w.ToLower() }).ToList();
+
+
+           
+            //Console.WriteLine("Product Names:");
+            //foreach (var productName in productNames)
+            //{
+            //    Console.WriteLine(productName);
+            //}
+
+
+
+
+
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            var numsPlusOne =
+                from n in numbers
+                select n + 1;
+
+            Console.WriteLine("Numbers + 1:");
+            foreach (var i in numsPlusOne)
+            {
+                Console.WriteLine(i);
+            }
 
             return View(studentRepo.GetAll());
         }

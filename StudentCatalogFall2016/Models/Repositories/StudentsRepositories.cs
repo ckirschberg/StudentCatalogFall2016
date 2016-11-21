@@ -21,9 +21,9 @@ namespace StudentCatalogFall2016.Models
             return db.Students.Find(id);
         }
 
-        public List<StudentModel> GetAll()
+        public IEnumerable<StudentModel> GetAll()
         {
-            return db.Students.ToList();
+            return db.Students;
         }
 
         public void InsertOrUpdate(StudentModel student)

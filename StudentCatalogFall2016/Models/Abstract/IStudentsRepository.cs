@@ -9,7 +9,7 @@ namespace StudentCatalogFall2016.Models
 {
     public interface IStudentsRepository
     {
-        List<StudentModel> GetAll();
+        IEnumerable<StudentModel> GetAll();
         StudentModel Find(int? id);
         void InsertOrUpdate(StudentModel student);
         Boolean Delete(int? id);
